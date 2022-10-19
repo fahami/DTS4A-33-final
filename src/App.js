@@ -8,6 +8,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import MovieList from "./containers/MovieList";
 import theme from "./themes/theme";
+import Register from "./containers/Register";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 				<Navbar></Navbar>
 				<Routes>
 					<Route path="/" element={<MovieList />} />
+					<Route path="register" element={<Register/> }/>
 				</Routes>
 			</div>
 		</ThemeProvider>
