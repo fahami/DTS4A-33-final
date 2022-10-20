@@ -17,15 +17,23 @@ const useUserStore = create(
       errorLogin: emptyString,
       errorRegister: emptyString,
       userReady: false,
+      auth: {
+        email: emptyString,
+        accessToken: emptyString
+      },
       onLogin: async (email, password) => {
         try {
-          await signInWithEmailAndPassword(auth, email, password);
+          const login = await signInWithEmailAndPassword(auth, email, password);
 
           set(
             produce((state) => {
               state.userReady = true;
               state.errorLogin = emptyString;
               state.errorRegister = emptyString;
+              state.auth = {
+                email: login.user.email,
+                accessToken: login.user.accessToken
+              }
             })
           );
         } catch (error) {
