@@ -115,7 +115,8 @@ const MovieList = () => {
 					display: "flex",
 					flexDirection: "row",
 					flexWrap: "wrap",
-					justifyContent: "space-between",
+					padding: 2,
+					justifyContent: "space-around",
 				}}
 			>
 				{movies.map((movie) => (
