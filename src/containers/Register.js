@@ -1,9 +1,28 @@
 import React from 'react'
 import { Avatar, Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import useUserStore, { selectErrorRegister, selectOnRegister, selectUserReady } from '../store/user';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const onRegister = useUserStore(selectOnRegister);
+    const userReady = useUserStore(selectUserReady);
+    const errorRegister = useUserStore(selectErrorRegister);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const email = data.get('email');
+        const password = data.get('password');
+
+        await onRegister(email, password);
+
+        if (userReady) {
+            navigate("/login");
+        }
+    };
     return (
         <Container component="main" maxWidth="xs">
             <Box
@@ -20,7 +39,7 @@ const Register = () => {
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
-                <Box component="form" noValidate onSubmit={''} sx={{ mt: 3 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <TextField
@@ -44,7 +63,7 @@ const Register = () => {
                             />
                         </Grid>
                     </Grid>
-                    <Typography color='red'>{''}</Typography>
+                    <Typography color='red'>{errorRegister}</Typography>
                     <Button
                         type="submit"
                         fullWidth
