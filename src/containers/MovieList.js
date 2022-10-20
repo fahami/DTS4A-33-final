@@ -21,8 +21,10 @@ const MovieList = () => {
 			}
 		};
 
-		fetchMovies();
-	}, []);
+		if (!queryParams.get("query")) {
+			fetchMovies();
+		}
+	}, [queryParams]);
 
 	useEffect(() => {
 		if (!moviesReady) return;
@@ -44,6 +46,31 @@ const MovieList = () => {
 		sortMovies(queryParams.get("sort"));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [queryParams, moviesReady]);
+
+	useEffect(() => {
+		const searchMovies = async (query) => {
+			try {
+				const fetchedMovies = await tmdb.get("search/movie", {
+					params: {
+						query,
+					},
+				});
+				setMovies(fetchedMovies.data.results);
+				setMoviesReady(true);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		const getData = setTimeout(() => {
+			if (queryParams.get("sort")) {
+				return;
+			}
+			if (queryParams.get("query")) {
+				searchMovies(queryParams.get("query"));
+			}
+		}, 2000);
+		return () => clearTimeout(getData);
+	}, [queryParams]);
 
 	const setSortParam = (type) => {
 		queryParams.set("sort", type);
