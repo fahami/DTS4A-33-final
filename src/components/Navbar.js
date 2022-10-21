@@ -5,7 +5,10 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+<<<<<<< HEAD
 import UserLog from "./UserLog";
+=======
+>>>>>>> search_movie
 import { Link, useSearchParams } from "react-router-dom";
 
 const SearchContainer = styled("div")(({ theme }) => ({
