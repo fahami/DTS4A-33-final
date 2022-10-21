@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import UserLog from "./UserLog";
 
 const SearchContainer = styled("div")(({ theme }) => ({
@@ -51,6 +51,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = () => {
+	const [queryParams, setQueryParams] = useSearchParams();
+
+	const handleSearch = (e) => {
+		if (queryParams.get("sort")) {
+			queryParams.delete("sort");
+		}
+		queryParams.set("query", e.target.value);
+		setQueryParams(queryParams);
+		if (e.target.value === "") {
+			queryParams.delete("query");
+			setQueryParams(queryParams);
+		}
+	};
+
 	return (
 		<Box sx={{ display: "flex" }}>
 			<AppBar>
@@ -80,9 +94,10 @@ const Navbar = () => {
 						<StyledInputBase
 							placeholder="Search…"
 							inputProps={{ "aria-label": "search" }}
+							onKeyDown={handleSearch}
 						/>
 					</SearchContainer>
-					<UserLog/>
+					<UserLog />
 				</Toolbar>
 			</AppBar>
 		</Box>
