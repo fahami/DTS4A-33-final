@@ -6,6 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import UserLog from "./UserLog";
 
 const SearchContainer = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -81,6 +82,7 @@ const Navbar = () => {
 							inputProps={{ "aria-label": "search" }}
 						/>
 					</SearchContainer>
+					<UserLog/>
 				</Toolbar>
 			</AppBar>
 		</Box>

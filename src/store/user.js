@@ -39,6 +39,7 @@ const useUserStore = create(
         } catch (error) {
           set(
             produce((state) => {
+              state.userReady = false;
               state.errorLogin = error.message;
             })
           );
