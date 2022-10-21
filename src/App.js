@@ -10,6 +10,7 @@ import MovieList from "./containers/MovieList";
 import theme from "./themes/theme";
 import Register from "./containers/Register";
 import Login from "./containers/Login";
+import PrivateComponent from "./components/PrivateComponent";
 
 function App() {
 	return (
@@ -18,8 +19,16 @@ function App() {
 				<Navbar></Navbar>
 				<Routes>
 					<Route path="/" element={<MovieList />} />
-					<Route path="register" element={<Register/> }/>
-					<Route path="login" element={<Login/> }/>
+					<Route path="register" element={
+						<PrivateComponent loginOnly={false}>
+							<Register/>
+						</PrivateComponent>
+					}/>
+					<Route path="login" element={
+						<PrivateComponent loginOnly={false}>
+							<Login/>
+						</PrivateComponent>
+					}/>
 				</Routes>
 			</div>
 		</ThemeProvider>

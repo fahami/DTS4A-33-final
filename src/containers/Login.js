@@ -8,6 +8,7 @@ const Login = () => {
     const navigate = useNavigate();
     const onLogin = useUserStore(selectOnLogin);
     const userReady = useUserStore(selectUserReady);
+    console.log(userReady);
     const errorLogin = useUserStore(selectErrorLogin);
 
     const handleSubmit = async (event) => {
