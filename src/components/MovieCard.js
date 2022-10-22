@@ -3,10 +3,15 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
-const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
+const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original/";
 
 const MovieCard = ({ movie }) => {
+	const navigate = useNavigate();
+	const onDetailMovie = (movieId) => {
+		navigate(`/movie/${movieId}`)
+	}
 	return (
 		<Card id={movie.id} sx={{ display: "flex", width: 400, margin: 5 }}>
 			<CardMedia
@@ -50,6 +55,9 @@ const MovieCard = ({ movie }) => {
 						onClick={() => alert("clicked")}
 					>
 						Watch
+					</Button>
+					<Button onClick={() => onDetailMovie(movie.id)}>
+						Detail
 					</Button>
 				</CardContent>
 			</Box>
