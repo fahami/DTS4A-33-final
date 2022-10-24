@@ -1,4 +1,11 @@
-import { Box, Button } from "@mui/material";
+import { SortByAlpha } from "@mui/icons-material";
+import {
+	Box,
+	Button,
+	IconButton,
+	LinearProgress,
+	Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -8,12 +15,16 @@ import MovieCard from "../components/MovieCard";
 const MovieList = () => {
 	const [queryParams, setQueryParams] = useSearchParams();
 	const [movies, setMovies] = useState([]);
+	const [sortType, setSortType] = useState("asc");
 	const [moviesReady, setMoviesReady] = useState(false);
 
 	useEffect(() => {
 		const fetchMovies = async () => {
 			try {
-				const fetchedMovies = await tmdb.get("trending/movie/week");
+				const fetchedMovies = await tmdb.get("trending/movie/week", {
+					params: { page: queryParams.get("page") || 1 },
+				});
+
 				setMovies(fetchedMovies.data.results);
 				setMoviesReady(true);
 			} catch (error) {
@@ -53,6 +64,7 @@ const MovieList = () => {
 				const fetchedMovies = await tmdb.get("search/movie", {
 					params: {
 						query,
+						page: queryParams.get("page") || 1,
 					},
 				});
 				setMovies(fetchedMovies.data.results);
@@ -71,9 +83,22 @@ const MovieList = () => {
 		}, 2000);
 		return () => clearTimeout(getData);
 	}, [queryParams]);
+	const toggleSort = () => {
+		if (sortType === "asc") {
+			setSortType("desc");
+			queryParams.set("sort", "desc");
+			setQueryParams(queryParams);
+		} else {
+			setSortType("asc");
+			queryParams.set("sort", "asc");
+			setQueryParams(queryParams);
+		}
+	};
 
-	const setSortParam = (type) => {
-		queryParams.set("sort", type);
+	const setNextPage = () => {
+		let page = queryParams.get("page") || 1;
+		let parsedPage = parseInt(page);
+		queryParams.set("page", parsedPage + 1);
 		setQueryParams(queryParams);
 	};
 
@@ -95,21 +120,11 @@ const MovieList = () => {
 				}}
 			>
 				Sort by Rating
-				<Button
-					variant="contained"
-					sx={{ ml: 2 }}
-					onClick={() => setSortParam("asc")}
-				>
-					Asc
-				</Button>
-				<Button
-					variant="contained"
-					sx={{ ml: 2, mr: 2 }}
-					onClick={() => setSortParam("desc")}
-				>
-					Desc
-				</Button>
+				<IconButton sx={{ mx: 2 }} onClick={toggleSort}>
+					<SortByAlpha />
+				</IconButton>
 			</Box>
+			{moviesReady ?? <LinearProgress />}
 			<Box
 				sx={{
 					display: "flex",
@@ -119,10 +134,25 @@ const MovieList = () => {
 					justifyContent: "space-around",
 				}}
 			>
-				{movies.map((movie) => (
-					<MovieCard key={movie.title} movie={movie}></MovieCard>
-				))}
+				{movies.length === 0 ? (
+					<Typography variant="body1">All movie was displayed</Typography>
+				) : (
+					movies.map((movie) => (
+						<MovieCard key={movie.title} movie={movie}></MovieCard>
+					))
+				)}
 			</Box>
+			{movies.length === 0 ? (
+				<></>
+			) : (
+				<Button
+					variant="contained"
+					sx={{ ml: 2, mr: 2 }}
+					onClick={() => setNextPage()}
+				>
+					Next Page
+				</Button>
+			)}
 		</Box>
 	);
 };
