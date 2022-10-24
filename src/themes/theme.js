@@ -17,6 +17,9 @@ const theme = createTheme({
 			primary: "rgba(255,255,255,0.87)",
 			secondary: "rgba(255,255,255,0.54)",
 		},
+		action: {
+			active: "rgba(255,255,255,0.08)",
+		},
 	},
 	typography: {
 		fontFamily: "Nunito",
