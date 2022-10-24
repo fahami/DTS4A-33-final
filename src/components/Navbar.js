@@ -75,7 +75,6 @@ const Navbar = () => {
 						sx={{
 							flexGrow: 1,
 							display: "block",
-							fontFamily: "monospace",
 							fontWeight: 700,
 							letterSpacing: ".3rem",
 						}}
