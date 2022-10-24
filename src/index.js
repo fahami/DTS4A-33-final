@@ -25,7 +25,14 @@ root.render(
               </PrivateHome>
             }
           />
-          <Route path="movie/:movieId" element={<MovieDetailPage />} />
+          <Route
+            path="movie/:movieId"
+            element={
+              <PrivateHome>
+                <MovieDetailPage />
+              </PrivateHome>
+            }
+          />
           <Route
             path="register"
             element={
