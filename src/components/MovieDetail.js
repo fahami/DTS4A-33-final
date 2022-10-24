@@ -7,11 +7,15 @@ import {
   ListItem,
   Typography,
   Chip,
+  Rating,
 } from "@mui/material";
+
+import theme from "../themes/theme";
 
 const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 
 const MovieDetail = ({ movie, date }) => {
+
   return (
     <Box component="div" width="100%" mt={7}>
       <Box
@@ -21,8 +25,8 @@ const MovieDetail = ({ movie, date }) => {
           backgroundRepeat: "no-repeat",
           width: "100%",
           height: {
-            lg: "90.85vh",
-            md: "500px",
+            lg: 'calc(100vh - 56px)',
+            md: 'calc(100vh - 56px)',
             sm: "auto",
           },
         }}
@@ -33,8 +37,8 @@ const MovieDetail = ({ movie, date }) => {
             width: "100%",
             backgroundColor: "rgba(60,64,72,0.7)",
             height: {
-              lg: "90.85vh",
-              md: "500px",
+              lg: 'calc(100vh - 56px)',
+              md: 'calc(100vh - 56px)',
               sm: "auto",
             },
             zIndex: 10,
@@ -68,13 +72,23 @@ const MovieDetail = ({ movie, date }) => {
               </Card>
             </Grid>
             <Grid item md={6}>
-              <List sx={{ paddingTop: "20%" }}>
+              <List sx={{ paddingTop: {lg:'15%', md:'10%'}}}>
                 <ListItem disablePadding sx={{ marginBottom: "0.5rem" }}>
                   <Typography variant="h4" color="white" fontWeight="bold">
                     {`${movie.title}(${date.getFullYear()})`}
                   </Typography>
                 </ListItem>
                 <ListItem disablePadding>
+                  <Typography
+                    variant="body2"
+                    marginRight="5px"
+                    paddingLeft="2px"
+                    paddingRight="2px"
+                    border="2px white solid"
+                    color="white"
+                  >
+                    {movie.original_language.toUpperCase()}
+                  </Typography>
                   <Typography
                     variant="body2"
                     marginRight="5px"
@@ -109,6 +123,10 @@ const MovieDetail = ({ movie, date }) => {
                     {movie.overview}
                   </Typography>
                 </ListItem>
+                {/* <ListItem disablePadding sx={{marginTop:'20px'}}>
+                  <Typography variant="body2" color='white' padding='5px' borderRadius='25%' backgroundColor={theme.palette.primary.main} >{movie.vote_average.toFixed(1)}</Typography>
+                  <Rating readOnly max={10} size='small' sx={{paddingTop:'0.2rem', marginLeft:'10px'}} precision={0.5} defaultValue={movie.vote_average.toFixed(1)}></Rating>
+                </ListItem> */}
               </List>
             </Grid>
           </Grid>

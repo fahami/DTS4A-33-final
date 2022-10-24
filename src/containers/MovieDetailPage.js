@@ -8,6 +8,7 @@ import MovieDetail from "../components/MovieDetail";
 const MovieDetailPage = () => {
   const [detailMovie, setDetailMovies] = useState([]);
   const [detailMovieReady, setDetailMoviesReady] = useState(false);
+
   let { movieId } = useParams();
 
   useEffect(() => {
@@ -23,6 +24,8 @@ const MovieDetailPage = () => {
     getDetailMovie();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
 
   if (!detailMovieReady) {
     return (
