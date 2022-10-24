@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import PrivateComponent from "./components/PrivateComponent";
 import PrivateHome from "./components/PrivateHome";
+import NotFound from "./containers/404";
 import Login from "./containers/Login";
 import MovieDetailPage from "./containers/MovieDetailPage";
 import MovieList from "./containers/MovieList";
@@ -53,7 +54,7 @@ root.render(
 								</PrivateComponent>
 							}
 						/>
-						<Route path="*" element={<h1>404</h1>} />
+						<Route path="*" element={<NotFound />} />
 					</Route>
 				</Routes>
 			</ThemeProvider>
