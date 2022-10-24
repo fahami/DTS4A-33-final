@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import PrivateComponent from "./components/PrivateComponent";
 import Login from "./containers/Login";
+import MovieDetailPage from "./containers/MovieDetailPage";
 import MovieList from "./containers/MovieList";
 import Register from "./containers/Register";
 import "./index.css";
@@ -16,6 +17,7 @@ root.render(
 			<Routes>
 				<Route path="/" element={<App />}>
 					<Route path="/" element={<MovieList />} />
+					<Route path="movie/:movieId" element={ <MovieDetailPage/> }/>
 					<Route
 						path="register"
 						element={

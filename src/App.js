@@ -7,9 +7,6 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import theme from "./themes/theme";
-import Register from "./containers/Register";
-import Login from "./containers/Login";
-import PrivateComponent from "./components/PrivateComponent";
 
 function App() {
 	return (

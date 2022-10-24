@@ -2,9 +2,14 @@ import { Badge, Box, CardMedia } from "@mui/material";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w200";
 
 const MovieCard = ({ movie }) => {
+	const navigate = useNavigate();
+	const onDetailMovie = (movieId) => {
+		navigate(`/movie/${movieId}`)
+	}
 	return (
 		<Box sx={{ width: 200, margin: 2 }}>
 			<Badge
@@ -16,7 +21,7 @@ const MovieCard = ({ movie }) => {
 					horizontal: "right",
 				}}
 			>
-				<Card sx={{ marginBottom: 1 }} onClick={() => alert(movie.title)}>
+				<Card sx={{ marginBottom: 1 }} onClick={() => onDetailMovie(movie.id)}>
 					<CardMedia
 						component="img"
 						height="300"
