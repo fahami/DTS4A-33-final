@@ -7,10 +7,10 @@ import {
   ListItem,
   Typography,
   Chip,
-  Rating,
+  // Rating,
 } from "@mui/material";
 
-import theme from "../themes/theme";
+// import theme from "../themes/theme";
 
 const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 

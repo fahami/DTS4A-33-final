@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
+import PrivateHome from "./components/PrivateHome";
 import PrivateComponent from "./components/PrivateComponent";
 import Login from "./containers/Login";
 import MovieDetailPage from "./containers/MovieDetailPage";
@@ -19,17 +20,17 @@ root.render(
           <Route
             path="/"
             element={
-              <PrivateComponent loginOnly={true}>
+              <PrivateHome>
                 <MovieList />
-              </PrivateComponent>
+              </PrivateHome>
             }
           />
           <Route
             path="movie/:movieId"
             element={
-              <PrivateComponent loginOnly={true}>
+              <PrivateHome>
                 <MovieDetailPage />
-              </PrivateComponent>
+              </PrivateHome>
             }
           />
           <Route
