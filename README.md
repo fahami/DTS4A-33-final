@@ -1,19 +1,6 @@
-# DTS REA4 Final Project
+# Cinemax App
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1a920cdd-e19b-437f-81f4-80056cc0bdbc/deploy-status)](https://app.netlify.com/sites/cinemaxmovie/deploys)
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
-
-## Daftar pair
-
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
-
-## Fork and Clone
-
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
-
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+## Deskripsi
+Sebuah aplikasi katalog film yang dibuat dengan ReactJS, memanfaatkan API dari TheMovieDB, dan menggunakan autentikasi dari Firebase Authentication.
+User dapat menjelajah banyak film dan melihat rating yang diberikan oleh khalayak umum terhadap film tersebut. Untuk menggunakan aplikasi ini, user diharuskan untuk mendaftar kedalam aplikasi dan kemudian login kedalamnya.
