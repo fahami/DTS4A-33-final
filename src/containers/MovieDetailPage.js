@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -29,8 +29,8 @@ const MovieDetailPage = () => {
 
   if (!detailMovieReady) {
     return (
-      <Box component="div" mt={7}>
-        <Typography>Loading....</Typography>
+      <Box component="div" sx={{position:'absolute',top:'50%', left:'50%'}}>
+        <CircularProgress color="inherit" />
       </Box>
     );
   }
