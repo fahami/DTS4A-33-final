@@ -6,4 +6,6 @@ Sebuah aplikasi katalog film yang dibuat dengan ReactJS, memanfaatkan API dari T
 User dapat menjelajah banyak film dan melihat rating yang diberikan oleh khalayak umum terhadap film tersebut. Untuk menggunakan aplikasi ini, user diharuskan untuk mendaftar kedalam aplikasi dan kemudian login kedalamnya.
 
 ## Video Dokumentasi
-![demo](https://drive.google.com/uc?export=view&id=1-MyEQXRqtPbNd_Q3ui7l35A19yAPJoru)
+![demo](https://github.com/fahami/DTS4B-33-final/blob/main/src/DTS4B-33-final.gif)
+
+Link : https://github.com/fahami/DTS4B-33-final/blob/main/src/DTS4B-33-final.gif
