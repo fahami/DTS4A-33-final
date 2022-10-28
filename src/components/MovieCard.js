@@ -11,9 +11,7 @@ const MovieCard = ({ movie }) => {
 		navigate(`/movie/${movieId}`);
 	};
 	return (
-		<Box sx={{ width: 200, margin: 2, '&:hover': {
-			transform: 'scale'
-		}}}>
+		<Box sx={{transition: 'transform 0.15s ease-in-out' , width: 200, margin: 2, '&:hover': { transform: "scale(1.05)" }}}>
 			<Badge
 				overlap="rectangular"
 				color="warning"
