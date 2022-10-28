@@ -2,13 +2,27 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
 	palette: {
-		type: "dark",
+		mode: "dark",
 		primary: {
-			main: "#E26D5A",
+			main: "#f37515",
 		},
 		secondary: {
-			main: "#EFCA08",
+			main: "#f37515",
 		},
+		background: {
+			default: "#1d2024",
+			paper: "#2c2e31",
+		},
+		text: {
+			primary: "rgba(255,255,255,0.87)",
+			secondary: "rgba(255,255,255,0.54)",
+		},
+		action: {
+			active: "rgba(255,255,255,0.08)",
+		},
+	},
+	typography: {
+		fontFamily: "Nunito",
 	},
 });
 

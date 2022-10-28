@@ -2,11 +2,16 @@ import { Badge, Box, CardMedia } from "@mui/material";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/w200";
+import { useNavigate } from "react-router-dom";
+const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w200";
 
 const MovieCard = ({ movie }) => {
+	const navigate = useNavigate();
+	const onDetailMovie = (movieId) => {
+		navigate(`/movie/${movieId}`);
+	};
 	return (
-		<Box sx={{ width: 200, margin: 2 }}>
+		<Box sx={{transition: 'transform 0.15s ease-in-out' , width: 200, margin: 2, '&:hover': { transform: "scale(1.05)" }}}>
 			<Badge
 				overlap="rectangular"
 				color="warning"
@@ -16,7 +21,7 @@ const MovieCard = ({ movie }) => {
 					horizontal: "right",
 				}}
 			>
-				<Card sx={{ marginBottom: 1 }} onClick={() => alert(movie.title)}>
+				<Card sx={{ marginBottom: 1 }} onClick={() => onDetailMovie(movie.id)}>
 					<CardMedia
 						component="img"
 						height="300"
